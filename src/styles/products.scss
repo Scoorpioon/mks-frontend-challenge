@@ -1,0 +1,94 @@
+@import 'globals.scss';
+
+.product {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 220px;
+    height: 285px;
+    border-radius: 8px;
+    box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.1);
+
+    img {
+        padding: 14px;
+        width: 80%;
+        height: 55%;
+        object-fit: contain;
+    }
+
+    .product__details {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        height: 96px;
+        padding: 10px 14px;
+        padding-bottom: 6px;
+
+        .details__name {
+            width: 123px;
+            height: 38px;
+            font-size: 16px;
+        }
+        
+        .details__price {
+            position: relative;
+            top: 3px; // Alinha com o título
+            padding: 4px 10px;
+            height: 26px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 15px;
+            background-color: #373737;
+            color: #fff;
+            
+        }
+
+        .details__description {
+            width: 192px;
+            height: 25px;
+            line-height: 12px;
+            font-size: 10px;
+            color: #2C2C2C;
+        }
+    }
+
+    button {
+        width: 100%;
+        background-color: $corPrincipal;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        height: 31.91px;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+        font-size: 14px;
+
+        &:hover {
+            @include transicaoCor(200ms, ease-in-out, $corPrincipalHover);
+        }
+    }
+}
+
+.product_loading {
+    width: 220px;
+    height: 285px;
+    border-radius: 8px;
+    background-color: $corEsqueleto;
+}
+
+.productGrid {
+    max-width: 50%;
+    
+    ul {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+}
+
+@media (max-width: 1440px) {
+    .productGrid {
+        max-width: 75%;
+    }
+}
