@@ -1,9 +1,14 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faCartShopping} from '@fortawesome/free-solid-svg-icons';
+import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 
-export default function Header({productsAmount, isCartEnabled}) {
-    return(
+interface HeaderProps {
+    productsAmount: number;
+    isCartEnabled: () => void;
+}
+
+export default function Header({ productsAmount, isCartEnabled }: HeaderProps) {
+    return (
         <header>
             <div id="header__titlebox">
                 <h1>MKS</h1>

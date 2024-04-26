@@ -14,12 +14,16 @@ export default function Home() {
     setCartEnable(!isCartEnabled);
   }
 
+  const alterList = (list: Array<object>) => {
+    console.log(list);
+  }
+
   return (
     <>
       <Header productsAmount={cart.length} isCartEnabled={enableCart} />
       <main>
         <ProductGrid setCart={setCart} />
-        <ShoppingCart selectedProducts={cart} style={isCartEnabled ? {display: 'block'} : {display: 'none'}} />
+        <ShoppingCart selectedProducts={cart} alterProducts={() => alterList} style={isCartEnabled ? {display: 'block'} : {display: 'none'}} />
       </main>
       <Footer />
     </>

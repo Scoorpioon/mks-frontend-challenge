@@ -2,12 +2,23 @@ import { useState, useEffect } from 'react';
 import { getProducts } from "../api/getProducts";
 import { useQuery } from '@tanstack/react-query';
 import React from "react";
-import Product from "./Product"
+import Product from "./Product";
 
-export default function ProductGrid({setCart}) {
+interface ProductInfo {
+    photo: string;
+    name: string;
+    price: number;
+    description: string;
+}
+
+interface ProductGridProps {
+    setCart: any;
+}
+
+const ProductGrid: React.FC<ProductGridProps> = ({ setCart }) => {
     const [products, setProducts] = useState<any[]>([]);
 
-    const {data} = useQuery({
+    const { data } = useQuery({
         queryKey: ['products'],
         queryFn: getProducts
     });
@@ -18,30 +29,39 @@ export default function ProductGrid({setCart}) {
 
     useEffect(() => {
         setCart(products);
-        /* products.map((obj) => console.log(obj)); */
     }, [products]);
 
-    if(!data) {
+    if (!data) {
         console.log('Carregando componentes...');
 
-        return(
+        return (
             <div className="productGrid">
                 <ul>
-                    <Product key={Math.random()} isLoading={true} />
-                    <Product key={Math.random()} isLoading={true} />
-                    <Product key={Math.random()} isLoading={true} />
+                    <Product selectedProducts={null} key={Math.random()} isLoading={true} />
+                    <Product selectedProducts={null} key={Math.random()} isLoading={true} />
+                    <Product selectedProducts={null} key={Math.random()} isLoading={true} />
                 </ul>
             </div>
         );
     } else {
-        return(
+        return (
             <div className="productGrid">
                 <ul>
-                    {data.products.map((obj: { photo: string; name: string; price: number; description: string; }) => {return <Product key={Math.random()} isLoading={false} img={obj.photo} name={obj.name} price={obj.price} desc={obj.description} selectedProducts={(products: object) => listInsert(products)} />})}
-
-                    {/* <Product key={Math.random()} isLoading={true} /> */}
+                    {data.products.map((obj: ProductInfo) => (
+                        <Product
+                            key={Math.random()}
+                            isLoading={false}
+                            img={obj.photo}
+                            name={obj.name}
+                            price={obj.price}
+                            desc={obj.description}
+                            selectedProducts={(products: object) => listInsert(products)}
+                        />
+                    ))}
                 </ul>
             </div>
         );
     }
 }
+
+export default ProductGrid;

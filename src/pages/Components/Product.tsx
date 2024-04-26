@@ -7,8 +7,17 @@ interface ProductProperties {
     isLoading: boolean;
     name?: string;
     desc?: string;
-    img?: string; // É o caminho da imagem que nós passaremos sempre que chamarmos o componente Product
+    img?: string;
     price?: number;
+    selectedProducts: any;
+}
+
+interface ProductInfo {
+    id: number;
+    name?: string;
+    price?: number;
+    description?: string;
+    image?: string;
 }
 
 const Product: React.FC<ProductProperties> = (props) => {
@@ -18,7 +27,8 @@ const Product: React.FC<ProductProperties> = (props) => {
         setLoading(props.isLoading);
     }, [props.isLoading]);
 
-    const productInfo: object = {
+    const productInfo: ProductInfo = {
+        id: Math.floor(Math.random() * 999),
         name: props.name,
         price: props.price,
         description: props.desc,
@@ -41,12 +51,11 @@ const Product: React.FC<ProductProperties> = (props) => {
                 </li>
             ) : (
                 <motion.div
-                className="product_loading"
-                animate={{
-                    backgroundColor: '#cccccc',
-                    transition: {duration: 0.5}
-                }}
-                
+                    className="product_loading"
+                    animate={{
+                        backgroundColor: '#cccccc',
+                        transition: {duration: 0.5}
+                    }}
                 >
                 </motion.div>
             )}
