@@ -1,10 +1,10 @@
 import { HydrationBoundary, QueryClient, QueryClientProvider, dehydrate } from "@tanstack/react-query";
 import {useState, useEffect } from 'react';
 import { getProducts } from "./api/getProducts";
-import ProductGrid from "./Components/ProductGrid";
-import ShoppingCart from "./Components/ShoppingCart";
-import Header from "./Components/Header";
-import Footer from "./Components/Footer";
+import ProductGrid from "../Components/ProductGrid";
+import ShoppingCart from "../Components/ShoppingCart";
+import Header from "../Components/Header";
+import Footer from "../Components/Footer";
 
 export default function Home() {
   const [cart, setCart] = useState([]);

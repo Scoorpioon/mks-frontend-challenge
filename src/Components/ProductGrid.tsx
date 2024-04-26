@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getProducts } from "../api/getProducts";
+import { getProducts } from "../pages/api/getProducts";
 import { useQuery } from '@tanstack/react-query';
 import React from "react";
 import Product from "./Product";
