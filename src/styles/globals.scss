@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+// Resets
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style-type: none;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+// Variáveis
+$corPrincipal: #0F52BA;
+$corPrincipalHover: #185abc;
+$corEsqueleto: #e3e3e3;
+
+// Funções
+@mixin transicaoCor($tempo, $tipo, $cor) {
+    transition: $tempo $tipo;
+    background-color: $cor;
+}
+
+// Body e Main
+body {
+    position: relative;
+    width: 99.2vw;
+    height: 100vh;
+    background-color: #F9F9F9;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    min-height: 800px;
+}
